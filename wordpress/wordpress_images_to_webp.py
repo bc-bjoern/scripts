@@ -66,8 +66,6 @@ try:
             if uploads_path in webp_path:
                 # Extract the relative path within the uploads directory
                 webp_file_path = webp_path.split(uploads_path, 1)[1].lstrip("/")
-                print(webp_file_path)
-                print(image_path)
                 webp_uri = urlunparse((url.scheme, url.netloc, uploads_path + "/" + webp_file_path, url.params, url.query, url.fragment))
                 webp_file_name = os.path.splitext(os.path.basename(webp_path))[0]
 
