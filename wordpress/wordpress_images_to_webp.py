@@ -29,6 +29,8 @@ db_user = ""
 db_password = ""
 db_name = ""
 
+exclude_images = ['1.png', '2.png', '3.png']
+
 try:
     # Connect to the MySQL database
     conn = mysql.connector.connect(
@@ -48,6 +50,10 @@ try:
         post_id, post_title, post_mime_type, guid = row
         url = urlparse(guid)
         url_path = url.path
+
+        if should_exclude_image(filename):
+            print(f"Das Bild {filename} wird ausgeschlossen.")
+            continue
 
         # Construct the absolute path to the image file
         image_path = os.path.join(docroot, url_path.lstrip('/'))
