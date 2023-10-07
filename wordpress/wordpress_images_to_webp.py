@@ -55,7 +55,7 @@ try:
         if os.path.isfile(image_path):
             if post_mime_type == 'image/jpeg':
                 image = Image.open(image_path)
-                webp_path = image_path.replace('.jpg', '.webp')
+                webp_path = image_path.replace('.jpg', '.webp').replace('.jpeg', '.webp')
                 image.save(webp_path, 'webp')
             elif post_mime_type == 'image/png':
                 image = Image.open(image_path)
