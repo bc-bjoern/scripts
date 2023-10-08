@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
-from PIL import Image
 from urllib.parse import urlparse, urlunparse
+from PIL import Image
 import mysql.connector
 
 """
@@ -51,6 +51,8 @@ try:
         url = urlparse(guid)
         url_path = url.path
 
+        # exclude
+        filename = os.path.basename(file_path)
         if should_exclude_image(filename):
             print(f"Das Bild {filename} wird ausgeschlossen.")
             continue
